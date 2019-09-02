@@ -1,0 +1,17 @@
+
+<main  class="container_12">
+    <div id="topartists" class="grid_6 alpha">
+        <h2 >Top artists in the country</h2>
+        <a  (click)="display_details(index)" id="artist" *ngFor="let index of top_artists" class="container_12">
+            {{index.name}}
+        </a>
+    </div>
+    <div id="toptracks" class="grid_6 omega">
+        <h2 >Top albums in the country</h2>
+        <a  (click)="display_albdetails(alb)" id="album" *ngFor="let alb  of top_albums" class="container_12">
+            {{alb.name}}
+        </a>
+    </div>
+</main>
+
+

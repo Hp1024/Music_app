@@ -1,0 +1,7 @@
+<h2>My wishlist</h2> 
+    <div  *ngFor="let elem of loc_wishlist">
+   
+      {{elem}} <span><button (click)="rem_from_wishlist(elem)">Remove</button></span>
+    </div>
+    <button (click)="goback_home()">Add</button><span><button (click)="goback_home()">Back</button></span>
+    

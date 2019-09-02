@@ -1,0 +1,18 @@
+<button (click)="goback_home()">Back</button>
+<main  class="container_12">
+    <div id="searchedartists" class="grid_6 alpha">
+        <h2 >Related artists</h2>
+        <a  (click)="display_details(index)" id="artist" *ngFor="let index of searched_artists" class="container_12">
+            {{index.name}}
+        </a>
+    </div>
+    <div id="toptracks" class="grid_6 omega">
+        <h2 >Related albums</h2>
+        <a  (click)="display_albdetails(alb)" id="album"   *ngFor="let alb  of searched_albums" class="container_12">
+            {{alb.name}}
+        </a>
+    </div>
+</main>
+
+
+
