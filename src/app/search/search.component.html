@@ -1,18 +1,48 @@
-<button (click)="goback_home()">Back</button>
-<main  class="container_12">
-    <div id="searchedartists" class="grid_6 alpha">
-        <h2 >Related artists</h2>
-        <a  (click)="display_details(index)" id="artist" *ngFor="let index of searched_artists" class="container_12">
-            {{index.name}}
-        </a>
-    </div>
-    <div id="toptracks" class="grid_6 omega">
-        <h2 >Related albums</h2>
-        <a  (click)="display_albdetails(alb)" id="album"   *ngFor="let alb  of searched_albums" class="container_12">
-            {{alb.name}}
-        </a>
-    </div>
-</main>
+<div class="container" padding-top="100px">
+        <div class="row" >
+                <div id="toptracks" class="col-12">
+                        <h2 >Related tracks</h2>
+                        <div class="row" id="track"  >
+                                <div  *ngFor="let alb  of searched_tracks" class="col-sm-3">
+                                        <div class="thumbnail">
+                                        <img (click)="display_albdetails(alb)" src="{{alb.image[2]['#text']}}">
+                                                <div class="col-12">
+                                                <p class="title">
+                                                    {{alb.name}}
+                                                </p>
+                                                <p class="subtitle">
+                                                    {{alb.artist}} <a id="heart"  (click)="add_to_wishlist(alb)" class="glyphicon glyphicon-heart"></a>  
+                                                    
+                                                </p>
+                                                </div>
+                                
+                                        </div>
+                                
+                    
+                       
+                                </div>
+                
+                        </div> 
+                </div>     
+        
+                <div id="searchedartists" class="col-12">
+                        <h2 >Related artists</h2>
+                        <div class="row" id="artist">
+                                <div *ngFor="let index of searched_artists" class="col-sm-3">
+                                        <div class="thumbnail">
+                                        <img (click)="display_details(index)" src="{{index.image[2]['#text']}}">
+                                        <p class="title">
+                                        {{index.name}}
+                                        </p>
+                                        </div>
+                                 </div>
+                        </div>
+                
+                </div>
+            
+        </div>
+        <button (click)="goback_home()">Back</button>
+</div>
 
 
 

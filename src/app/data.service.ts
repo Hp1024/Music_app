@@ -3,7 +3,6 @@ import {HttpClient,HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -11,24 +10,14 @@ export class DataService {
   
   private charts_topartists_url='http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=e99d88c19c501cc1ae5a8a2331245f47&format=json';
   private charts_topalbums_url='http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=e99d88c19c501cc1ae5a8a2331245f47&format=json';
-  private geo_topartists_url='http://ws.audioscrobbler.com/2.0/?method=geo.gettopartists&country=india&api_key=e99d88c19c501cc1ae5a8a2331245f47&format=json';
-  private geo_topalbums_url='http://ws.audioscrobbler.com/2.0/?method=geo.gettoptracks&country=india&api_key=e99d88c19c501cc1ae5a8a2331245f47&format=json';
-  // 'http://ws.audioscrobbler.com/2.0/?method=artist.getinfo';
-
+  private geo_topartists_url='http://ws.audioscrobbler.com/2.0/?method=geo.gettopartists&country=india&limit=24&api_key=e99d88c19c501cc1ae5a8a2331245f47&format=json';
+  private geo_topalbums_url='http://ws.audioscrobbler.com/2.0/?method=geo.gettoptracks&country=india&limit=24&api_key=e99d88c19c501cc1ae5a8a2331245f47&format=json';
   private getartist_info_url;
   private getalbum_info_url;
   private search_artist_url;
-  private search_album_url;
-  private wishlist=[];
-  append(song){
-    this.wishlist.push(song);
-  }
-  remove(song){
-    this.wishlist.splice(this.wishlist.indexOf(song), 1);
-}
-get_wishlist(){
-  return this.wishlist;
-}
+  private search_track_url;
+  private wishlist_url="http://localhost:3000";
+  private arr=[];
   const_url(par){               
     let artist_name=par;
     this.getartist_info_url="http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + artist_name+ "&api_key=e99d88c19c501cc1ae5a8a2331245f47&format=json";
@@ -40,15 +29,34 @@ get_wishlist(){
   }
   const_url2(artist){
     let search_art=artist;
-    this.search_artist_url="http://ws.audioscrobbler.com/2.0/?method=artist.search&artist="+ search_art+"&api_key=e99d88c19c501cc1ae5a8a2331245f47&format=json";
+    this.search_artist_url="http://ws.audioscrobbler.com/2.0/?method=artist.search&artist="+ search_art+"&api_key=e99d88c19c501cc1ae5a8a2331245f47&format=json&limit=28";
   }
-  const_url3(album){
-    let search_alb=album;
-    this.search_album_url="http://ws.audioscrobbler.com/2.0/?method=album.search&album="+search_alb+"&api_key=e99d88c19c501cc1ae5a8a2331245f47&format=json";
+  const_url3(track){
+    let search_track=track;
+    this.search_track_url="http://ws.audioscrobbler.com/2.0/?method=track.search&track="+search_track+"&api_key=e99d88c19c501cc1ae5a8a2331245f47&format=json&limit=28";
   }
-  constructor(private http:HttpClient) { 
-
+  check(elem){
+    this.get_wishlist().subscribe(data=>{this.arr=data
+      console.log(this.arr.length);
+      let flag=1;
+      for(var i=0 ; i<this.arr.length&&flag===1;i++){
+          if(elem.name=== this.arr[i].name){
+            alert("Fail");
+            flag=0;
+          }
+          
+        }
+        if(flag===1)
+        {this.push_wishlist(elem).subscribe();
+          alert("Success!!"); }
+      
+    });
+    
+    
+    
   }
+  constructor(private http:HttpClient) { }
+ 
   get_charts_topartists():Observable<any>{
     return this.http.get<any>(this.charts_topartists_url);
   }
@@ -70,7 +78,18 @@ get_wishlist(){
   get_search_artist():Observable<any>{
     return this.http.get<any>(this.search_artist_url);
   }
-  get_search_album():Observable<any>{
-    return this.http.get<any>(this.search_album_url);
+  get_search_track():Observable<any>{
+    return this.http.get<any>(this.search_track_url);
   }
+  get_wishlist():Observable<any>{
+    return this.http.get<any>(this.wishlist_url+'/wishlist');
+    console.log("tested");
+  }
+  push_wishlist(elem):Observable<any>{
+    return this.http.post<any>(this.wishlist_url+'/wishlist',elem);
+  }
+  delete_fromwishlist(id:number):Observable<{}>{
+    return this.http.delete(`${'http://localhost:3000/wishlist'}/${id}`);
+  }
+  
 }

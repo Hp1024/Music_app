@@ -1,7 +1,31 @@
+<div class="container" padding-top="100px">
 <h2>My wishlist</h2> 
-    <div  *ngFor="let elem of loc_wishlist">
-   
-      {{elem}} <span><button (click)="rem_from_wishlist(elem)">Remove</button></span>
-    </div>
-    <button (click)="goback_home()">Add</button><span><button (click)="goback_home()">Back</button></span>
-    
+  <table class="table table-hover">
+      <!-- <thead>
+        <tr>
+          <th>Track</th>
+          <th>Album</th>
+          <th>Artist</th>
+          <th></th>
+        </tr>
+      </thead> -->
+      <!-- <tbody >
+        <tr *ngFor="let elem of loc_wishlist">
+          <td>{{elem}}</td>
+          <td><a class="glyphicon glyphicon-play-circle"></a></td>
+          <td><a class="glyphicon glyphicon-download-alt"></a></td>
+          <td><a class="glyphicon glyphicon-trash" (click)="rem_from_wishlist(elem)"></a></td>
+        </tr>
+      </tbody> -->
+      <tbody >
+        <tr *ngFor="let elem of loc_wishlist">
+          <td>{{elem.name}}</td>
+          <td>{{elem.artist}}</td>
+          <td><a class="glyphicon glyphicon-play-circle"></a></td>
+          <td><a class="glyphicon glyphicon-download-alt"></a></td>
+          <td><a class="glyphicon glyphicon-trash" (click)="rem_from_wishlist(elem)"></a></td>
+        </tr>
+      </tbody>
+  </table>
+  <button class="button" (click)="goback_home()">Add</button><span><button class="button"  (click)="goback_home()">Back</button></span>
+</div> 

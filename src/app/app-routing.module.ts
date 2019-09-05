@@ -13,8 +13,9 @@ const routes: Routes = [
   {path:'home/:index', component:DetailsComponent},
   {path:'chart',component:ChartsComponent},
   {path:'home',component:HomeComponent},
-  {path:'myaccount',component:MywishlistComponent,pathMatch:"full"},
-  {path:'myaccount/:add',component:MyaccountComponent},
+  // {path:'myaccount',component:MywishlistComponent,pathMatch:"full"},
+  // {path:'myaccount/:name/:artist',component:MyaccountComponent},
+  {path:'myaccount',component:MyaccountComponent},
   {path:'home/track/:alb/:art',component:AlbumdetailsComponent},
   {path:'search/:key', component:SearchComponent}
 

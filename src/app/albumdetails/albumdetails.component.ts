@@ -24,10 +24,8 @@ export class AlbumdetailsComponent implements OnInit {
   goback_home(){
     this.loc_nav.navigate(['/home']);
   }
-  add_to_wishlist(){
+  
     
-    this.loc_nav.navigate(['/myaccount',this.albinfo.name]);
-  }
-
 
 }
+

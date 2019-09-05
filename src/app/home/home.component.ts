@@ -9,6 +9,7 @@ import { Route, Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   private top_artists=[];
   private top_albums=[];
+
   constructor(private loc_serv:DataService , private loc_router:Router) { }
   display_details(elem){
      this.loc_router.navigate(['/home' , elem.name]);
@@ -18,6 +19,11 @@ export class HomeComponent implements OnInit {
     this.loc_router.navigate(['/home/track' , elem1.name,elem1.artist.name]);
 
  }
+ add_to_wishlist(song){
+   this.loc_serv.check(song);
+   
+}
+
   ngOnInit() {
     this.loc_serv.get_geo_topartists().subscribe(data=>this.top_artists=data.topartists.artist);
     this.loc_serv.get_geo_topalbums().subscribe(data=>this.top_albums=data.tracks.track);

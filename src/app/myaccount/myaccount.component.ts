@@ -1,42 +1,50 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { ActivatedRoute, Router } from '@angular/router';
+// import { Wishlist } from '../interface';
 
 @Component({
   selector: 'app-myaccount',
   template: `
-    <h2>My wishlist</h2> 
-    <div  *ngFor="let elem of loc_wishlist">
-   
-      {{elem}} <span><button (click)="rem_from_wishlist(elem)">Remove</button></span>
-    </div>
-    <button (click)="goback_home()">Add</button><span><button (click)="goback_home()">Back</button></span>
-    
+  <div class="container" padding-top="100px">
+  <h2>My wishlist</h2> 
+  <table class="table table-hover">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Track</th>
+          <th>Listeners</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let elem of loc_wishlist">
+          <td><img  src="{{elem.image[0]['#text']}}"></td>
+          <td>{{elem.name}}</td>
+          <td>{{elem.listeners}}</td>
+          <td ><a class="glyphicon glyphicon-trash" (click)="rem_from_wishlist(elem.id)"></a></td>  
+        </tr>
+      </tbody>
+  </table>
+  <button class="button" (click)="goback_home()">Add</button><span><button class="button" (click)="goback_home()">Back</button></span>
+</div> 
   `,
-  styles: []
+  styles: ['a{color: dimgray;}a:hover{text-decoration: none;color: blue;}']
 })
 export class MyaccountComponent implements OnInit {
-  private loc_add;
-  private exp=true;
-  private loc_wishlist=this.loc_serv.get_wishlist();
-  rem_from_wishlist(song){
-  this.loc_serv.remove(song);
+ private loc_wishlist;
+
+  rem_from_wishlist(id){
+  this.loc_serv.delete_fromwishlist(id).subscribe();
+ window.location.reload();
   }
   goback_home(){
     this.loc_nav.navigate(['/home']);
   }
-  constructor(private loc_serv:DataService,private loc_nav: Router,private loc_router : ActivatedRoute) { }
+  constructor(private loc_serv:DataService,private loc_nav: Router,private loc_router : ActivatedRoute) { 
+  }
   ngOnInit() {
-    let add= this.loc_router.snapshot.paramMap.get('add');
-      this.loc_add=add;
-      for( var i = 0; i < this.loc_wishlist.length; i++){ 
-        if ( this.loc_wishlist[i] === this.loc_add) {
-          this.exp=false;
-          break;
-        }
-     } 
-     if(this.exp){this.loc_serv.append(this.loc_add);}
-     
+    this.loc_serv.get_wishlist().subscribe(data=>this.loc_wishlist=data);
   }
 
 }

@@ -1,0 +1,69 @@
+{
+  "wishlist": [
+    {
+      "name": "The Scientist",
+      "duration": "309",
+      "listeners": "1628188",
+      "mbid": "13f5488d-8e41-42d8-9fe9-a5295f1a9a3d",
+      "url": "https://www.last.fm/music/Coldplay/_/The+Scientist",
+      "streamable": {
+        "#text": "0",
+        "fulltrack": "0"
+      },
+      "artist": {
+        "name": "Coldplay",
+        "mbid": "cc197bad-dc9c-440d-a5b5-d52ba2e14234",
+        "url": "https://www.last.fm/music/Coldplay"
+      },
+      "image": [
+        {
+          "#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+          "size": "small"
+        },
+        {
+          "#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+          "size": "medium"
+        },
+        {
+          "#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+          "size": "large"
+        },
+        {
+          "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+          "size": "extralarge"
+        }
+      ],
+      "@attr": {
+        "rank": "0"
+      },
+      "id": 1
+    },
+    {
+      "name": "Fluorescent Adolescent",
+      "artist": "Arctic Monkeys",
+      "url": "https://www.last.fm/music/Arctic+Monkeys/_/Fluorescent+Adolescent",
+      "streamable": "FIXME",
+      "listeners": "1009948",
+      "image": [
+        {
+          "#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+          "size": "small"
+        },
+        {
+          "#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+          "size": "medium"
+        },
+        {
+          "#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+          "size": "large"
+        },
+        {
+          "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+          "size": "extralarge"
+        }
+      ],
+      "mbid": "fa2fa7b2-6e64-4d17-ba30-bf1027b690d1",
+      "id": 2
+    }
+  ]
+}

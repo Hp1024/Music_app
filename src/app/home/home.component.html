@@ -1,16 +1,42 @@
 
-<main  class="container_12">
-    <div id="topartists" class="grid_6 alpha">
-        <h2 >Top artists in the country</h2>
-        <a  (click)="display_details(index)" id="artist" *ngFor="let index of top_artists" class="container_12">
-            {{index.name}}
-        </a>
-    </div>
-    <div id="toptracks" class="grid_6 omega">
-        <h2 >Top albums in the country</h2>
-        <a  (click)="display_albdetails(alb)" id="album" *ngFor="let alb  of top_albums" class="container_12">
-            {{alb.name}}
-        </a>
+<main  class="container">
+    <div class="row">
+        <div id="toptracks" class="col-12" >
+            <h2 >Top tracks in the country</h2>
+            <div class="row">
+            
+                <div  id="track" *ngFor="let alb  of top_albums" class="col-sm-3"  > 
+                    <div class="thumbnail">
+                        <img (click)="display_albdetails(alb)" src="{{alb.image[2]['#text']}}">
+                        
+                        <div class="col-12">
+                            <p class="title">
+                                {{alb.name}}
+                            </p>
+                            <p class="subtitle">
+                                {{alb.artist.name}} <a id="heart"  (click)="add_to_wishlist(alb)" class="glyphicon glyphicon-heart"></a>
+                            </p>
+                        </div>
+                    </div>
+                       
+                </div>
+                
+            </div>
+        </div>
+        <div id="topartists" class="col-12">
+            <h2 >Top artists in the country</h2>
+            <div class="row">
+                <div id="artist" *ngFor="let index of top_artists" class="col-sm-3" >
+                    <div class="thumbnail">
+                    <img (click)="display_details(index)" src="{{index.image[2]['#text']}}">
+                    <p class="title">
+                        {{index.name}}
+                    </p>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
     </div>
 </main>
 

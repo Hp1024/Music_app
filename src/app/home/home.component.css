@@ -1,0 +1,7 @@
+a{
+    color: dimgray;
+}
+a:hover,a:visited,a:focus{
+    color: red;
+    text-decoration: none;
+}

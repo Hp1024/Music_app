@@ -22,8 +22,5 @@ export class DetailsComponent implements OnInit {
   goback_home(){
     this.loc_nav.navigate(['/home']);
   }
-  add_to_wishlist(song){
-    
-  }
 
 }

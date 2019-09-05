@@ -1,0 +1,7 @@
+a{
+    color: dimgray;
+}
+a:hover{
+    text-decoration: none;
+    color: blue;
+}
